@@ -1,4 +1,4 @@
-# UniDelegateExtensionMethods
+# Kogane Delegate Extension Methods
 
 Action、Func、MulticastDelegate 型の拡張メソッド
 
