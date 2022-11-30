@@ -213,5 +213,47 @@ namespace Kogane
                     .Any( x => ( bool )x.DynamicInvoke( arg1, arg2, arg3 ) )
                 ;
         }
+
+        public static TResult CallOrDefault<TResult>
+        (
+            this Func<TResult> self,
+            Func<TResult>      defaultValue
+        )
+        {
+            return self != null ? self() : defaultValue();
+        }
+
+        public static TResult CallOrDefault<T, TResult>
+        (
+            this Func<T, TResult> self,
+            T                     arg,
+            Func<T, TResult>      defaultValue
+        )
+        {
+            return self != null ? self( arg ) : defaultValue( arg );
+        }
+
+        public static TResult CallOrDefault<T1, T2, TResult>
+        (
+            this Func<T1, T2, TResult> self,
+            T1                         arg1,
+            T2                         arg2,
+            Func<T1, T2, TResult>      defaultValue
+        )
+        {
+            return self != null ? self( arg1, arg2 ) : defaultValue( arg1, arg2 );
+        }
+
+        public static TResult CallOrDefault<T1, T2, T3, TResult>
+        (
+            this Func<T1, T2, T3, TResult> self,
+            T1                             arg1,
+            T2                             arg2,
+            T3                             arg3,
+            Func<T1, T2, T3, TResult>      defaultValue
+        )
+        {
+            return self != null ? self( arg1, arg2, arg3 ) : defaultValue( arg1, arg2, arg3 );
+        }
     }
 }
