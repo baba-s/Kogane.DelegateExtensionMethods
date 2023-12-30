@@ -19,6 +19,15 @@ namespace Kogane
         }
 
         /// <summary>
+        /// パラメーターを受け取らない Action デリゲートを実行します
+        /// </summary>
+        public static void CallIf( this Action action, bool conditional )
+        {
+            if ( !conditional ) return;
+            action.Call();
+        }
+
+        /// <summary>
         /// 1 つのパラメーターを受け取る Action デリゲートを実行します
         /// </summary>
         public static void Call<T>( this Action<T> action, T arg )
